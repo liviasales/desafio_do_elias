@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="bootstrap/bootstrap.css">
 </head>
 <body>
+<?php if (isset($_SESSION['cobranca']['alerta']) && !empty($_SESSION['cobranca']['alerta'])) { ?>
+    <div class="row">
+        <div class="col-md-12 alert alert-<?= $_SESSION['cobranca']['alerta']; ?>" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <span style="font-size: 16px;"><?= $_SESSION['cobranca']['mensagem']; ?></span>        
+        </div>
+    </div>
+<?php } ?>
     <div class="container">
             <div class="tittle">
                 <h3>Desafio do troco</h3>
