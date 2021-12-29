@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <?php
-    require_once('../classes/c_troco.php');
+    require_once('classes/c_troco.php');
     $troco = new c_troco();
 ?>
 <head>
