@@ -1,6 +1,6 @@
 <?php
     class c_troco {
-        public function troco($valor) {
+        function troco($valor) {
             $troco = [0,0,0,0,0,0];
             $notas = [100,50,20,10,5,2];
 

@@ -3,8 +3,8 @@
     $_SESSION['cobranca']['mensagem'] = '';
     $_SESSION['cobranca']['alerta'] = 'danger';
     $troco = new c_troco;
-    $valorTotal = (string)$_POST['valorTotal'];
-    $valorPago = (string)$_POST['valorPago'];
+    $valorTotal = $_POST['valorTotal'];
+    $valorPago = $_POST['valorPago'];
     if ($valorPago > $valorTotal) {
         return $troco;
     }
