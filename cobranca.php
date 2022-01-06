@@ -1,9 +1,30 @@
+<?php
+    session_start();
+    $_SESSION['cobranca']['mensagem'] = '';
+    $_SESSION['cobranca']['alerta'] = 'danger';
+    $valorTotal = $_POST['valorTotal'];
+    $valorPago = $_POST['valorPago'];
+    $valorTroco = $valorPago - $valorTotal;
+    print_r(troco(90));
+    function troco($valor) {           
+        $troco = [0,0,0,0,0,0];
+        $notas = [100,50,20,10,5,2];
+        for($i = 0; $i < count($troco); $i++) {
+            $troco[$i] = floor($valor / $notas[$i]);
+            $valor -= $troco[$i] * $notas[$i];
+        }
+        return $troco;
+    }
+    if ($valorPago > $valorTotal) {
+        $_SESSION['cobranca']['mensagem'] .= 'Seu troco é de R$'.$valorTroco.',00<br>';
+        $_SESSION['cobranca']['mensagem'] .= 'E a sequência de notas recebidas por você é: '.$troco[$i].'<br>';
+        $_SESSION['cobranca']['alerta'] = 'success';
+    } else {
+        $_SESSION['cobranca']['mensagem'] .= 'Você não possui troco!!';        
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php
-    require_once('classes/c_troco.php');
-    $troco = new c_troco();
-?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +46,7 @@
                 <h3>Desafio do troco</h3>
                 <small>By: Elias</small>
             </div>
-        <form method="POST" action="cont_cobranca.php">                        
+        <form method="POST" action="">                        
             <div class="form-group">
                 <label for="exampleInputEmail1"><b>Valor total dos produtos:</b></label>
                 <div class="input-group mb-3">
